@@ -2,3 +2,40 @@
     margin: 0;
     padding: 0;
 }
+
+.active {
+    border: 3px solid rgb(160, 154, 124);
+}
+
+.task-cont {
+    height: 50vh;
+    width: 40vw;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.text-cont {
+    width: 90%;
+    resize: none;
+    outline: none;
+    border: none;
+}
+
+.clr-pro-cont {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.task-cont-close:hover {
+    color: red;
+}
+
+.rm-btn .fa-times:hover {
+    color: red ;
+}
+

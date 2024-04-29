@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style src="./style.css"></style>
+    <link href="style.css" rel="stylesheet">
     <title>Kanban Board</title>
 </head>
 <body>
@@ -24,7 +24,19 @@
             </div>
         </div>
     </nav>
+    <div class="main-tkt-cont"></div>
+    <div class="task-cont bg-gray-800">
+        <textarea class="text-cont m-2 p-5" placeholder="Shift + enter to save"></textarea>
+        <div class="clr-pro-cont">
+            <i class="task-cont-close fa-solid fa-times text-white text-2xl"></i>
+            <div class="clr-pro pink bg-pink-500 h-10 w-16 m-2 hover:bg-pink-200"></div>
+            <div class="clr-pro green bg-green-500 h-10 w-16 m-2 hover:bg-green-200"></div>
+            <div class="clr-pro blue bg-blue-500 h-10 w-16 m-2 hover:bg-blue-200"></div>
+            <div class="clr-pro black bg-black h-10 w-16 m-2 hover:bg-gray-600 active"></div>
+        </div>
+    </div>
     <script src="./script.js"></script>
+    <script src="https://unpkg.com/shortid-dist@1.0.5/dist/shortid-2.2.13.min.js"></script>
     <script src="https://kit.fontawesome.com/589957875e.js" crossorigin="anonymous"></script>
 </body>
 </html>
