@@ -1,0 +1,53 @@
+-> Top nav bar
+    -> colour icons in nav bar
+    -> add button
+    -> remove button
+
+
+-> onClick of add button
+    -> Modal to add the node
+        -> colour widgets
+        -> Task area
+
+-> Task card
+    -> colour
+    -> Unique Id strip
+    -> Task area
+    -> lock button
+
+
+Functionalites
+    -> Event Listeners
+        -> Click event on add button
+        -> Click event on colour widgets
+        -> Key down on enter button
+        -> Click event on top strip of task card
+        -> Click event on lock/unlock icon
+        -> Click event on remove button
+        -> Click event on the task card to remove
+        -> Click event on the top colour icons
+        -> Double Clicke event on top colour icons to filter
+
+
+Font awesome - used to add icons in my code
+
+   -> <script src="https://kit.fontawesome.com/589957875e.js" crossorigin="anonymous"></script>
+
+Git and Github
+
+Git -> Is a version control for your local system
+
+git commit -> Commiting to the changes in a branch
+git push -> Pushing these changes on to the branch
+
+master -> main code
+new-branch -> Some other code
+merge the new-branch to master
+
+
+How to add changes to new branch in git?
+-> 
+
+How to send the changes to the github website?
+
+
