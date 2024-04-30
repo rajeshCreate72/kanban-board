@@ -11,6 +11,9 @@ let allPriorityColors = document.querySelectorAll('.clr-pro');
 let taskTextArea = document.querySelector('.text-cont');
 let taskColor = 'bg-black';
 
+let lockClass = 'fa-lock'
+let unlockClass = 'fa-lock-open'
+
 let ticketArray = [];
 
 let mainTicketContainer = document.querySelector('.main-tkt-cont');
@@ -18,7 +21,10 @@ let mainTicketContainer = document.querySelector('.main-tkt-cont');
 taskRemoveCont.addEventListener('click', function() {
     // Set the display of the task conter to none
     addTaskFlag = !addTaskFlag;
-    taskAddCont.style.display = 'none';
+    if (!addTaskFlag) {
+        taskAddCont.style.display = 'none';
+    }
+    taskTextArea.value = '';
 })
 
 addBtn.addEventListener('click', function() {
@@ -60,7 +66,8 @@ allPriorityColors.forEach((clrEle) => {
 
 taskAddCont.addEventListener('keydown', (event) => {
     let key = event.key;
-    if (key === 'Enter' && event.shiftKey) {
+    if (key === 'Enter') {
+        addTaskFlag = !addTaskFlag;
         console.log('Save the task');
         createTicket(taskColor, taskTextArea.value);
         taskAddCont.style.display = 'none';
@@ -73,22 +80,37 @@ function createTicket(taskClr, task) {
     let ticketCont = document.createElement('div');
     ticketCont.setAttribute('class', 'ticket-cont');
     ticketCont.innerHTML = `
-        <div class="ticket-clr ${taskClr}"></div>
+        <div class="ticket-clr h-10 ${taskClr}"></div>
         <div class="ticket-text ${id}">${task}</div>
-        <div class="ticket-lock">
-            <i class="fa-solid fa-lock"></i>
+        <div class="ticket-lock absolute bottom-2 right-2">
+            <i class="fa-solid fa-lock text-2xl" aria-hidden="true"></i>
         </div>
     `;
     mainTicketContainer.appendChild(ticketCont);
-    handleTicketLock();
+    mainTicketContainer.style.display = 'block';
+    handleTicketLock(ticketCont, id);
     handleTicketColor();
     handleTicketRemove(ticketCont, id);
     ticketArray.push({taskClr, task, tktId: id});
     console.log(ticketArray)
 }
 
-function handleTicketLock() {
+function handleTicketLock(ticket, id) {
+    let ticketLockEle = ticket.querySelector('.ticket-lock');
+    let ticketLockIcon = ticketLockEle.children[0];
+    let ticketTaskArea = ticket.querySelector('.ticket-text');
 
+    ticketLockIcon.addEventListener('click', function() {
+        if (ticketLockIcon.classList.contains(lockClass)) {
+            ticketLockIcon.classList.add(unlockClass);
+            ticketLockIcon.classList.remove(lockClass);
+            ticketTaskArea.setAttribute('contenteditable', true);
+        } else {
+            ticketLockIcon.classList.add(lockClass);
+            ticketLockIcon.classList.remove(unlockClass);
+            ticketTaskArea.setAttribute('contenteditable', false);
+        }
+    })
 }
 
 function handleTicketColor() {
@@ -99,7 +121,8 @@ function handleTicketRemove(ticket, id) {
     ticket.addEventListener('click', function() {
         if(!rmTaskFlag) return;
         ticket.remove();
-        getTicketInd(id);
+        let ind = getTicketInd(id);
+        ticketArray.splice(ind, 1);
     })
 }
 
@@ -107,7 +130,7 @@ function getTicketInd(id) {
     let ticketId = ticketArray.findIndex((tktObj) => {
         return tktObj.tktId === id;
     })
-    return ticketId[0];
+    return ticketId;
 }
 
 

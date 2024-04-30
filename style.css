@@ -35,7 +35,26 @@
     color: red;
 }
 
-.rm-btn .fa-times:hover {
+.fa-times:hover {
     color: red ;
 }
+
+.main-tkt-cont {
+    display: none;
+    height: 25vh;
+    width: 15vw;
+}
+
+.center-main-cont {
+    display: flex;
+    justify-content: space-between;
+    height: 85vh;
+    width: 95vw;
+    background-color: aliceblue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+}
+
 
