@@ -1,5 +1,3 @@
-# kanban-board-scaler
-
 # To run the application:
 
 1. Open the ```kanban.html```
